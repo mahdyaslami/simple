@@ -1,4 +1,7 @@
 <?php
 
-$baseUri = '/test';
-$requestUri = substr($_SERVER['REQUEST_URI'], strlen($baseUri));
+$baseUri = '/ssfw';
+
+$request = new stdClass();
+$request->uri = substr($_SERVER['REQUEST_URI'], strlen($baseUri));
+$request->method = $_SERVER['REQUEST_METHOD'];
