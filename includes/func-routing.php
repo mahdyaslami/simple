@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Check if request uri match with pattern.
  * 
