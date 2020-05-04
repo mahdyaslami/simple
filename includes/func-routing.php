@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Check if request uri match with pattern.
+ * 
+ * @param string $method HTTP method: GET, POST, PUT, PATCH, DELETE, ...
+ * @param string $pattern Contain pattern you want to match with request uri.
+ *  number: /users/{num:id}
+ *  string: /news/today/{subtitle}
+ * 
+ * @return bool if request match return true else return false.
+ * 
+ * @throws \Exception (Method not allowed.) When request match and method does
+ *  match.
+ */
 function checkUri($method, $pattern)
 {
     global $request;
