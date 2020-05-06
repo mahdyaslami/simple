@@ -9,7 +9,7 @@ if ($router->get('/users')) {
 } 
 
 //
-// Error handling
+// Routing errors
 //
 
 if ($router->getAcceptedCount() > 0) {
