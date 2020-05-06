@@ -99,17 +99,4 @@ class Router
 
         return true;
     }
-
-    /**
-     * Check if request method match with wanted method.
-     * 
-     * @param string $requestMethod HTTP method: GET, POST, PUT, PATCH, DELETE, ...
-     * @param string $method Contain method you want to match with requestMethod.
-     * 
-     * @return bool if match return true else return false.
-     */
-    private function checkMethod($requestMethod, $method)
-    {
-        return ;
-    }
 }
