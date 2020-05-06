@@ -1,7 +1,5 @@
 <?php
 
-// throw new Exception('Method not allowed.', 405);
-
 class Router
 {
     private $matchsCount = 0;
