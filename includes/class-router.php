@@ -47,16 +47,17 @@ class Router
     public function request($method, $pattern)
     {
         global $request;
-        if ($this->checkUri($request->uri, $pattern)) {
-            $this->matchsCount++;
+        if ($this->checkUri($request->uri, $pattern) === false) {
+            return false;
         }
+        $this->matchsCount++;
 
-        if (strtoupper($method) === $request->method) {
-            $this->acceptedCount++;
-            return true;
+        if (strtoupper($method) !== $request->method) {
+            return false;
         }
+        $this->acceptedCount++;
 
-        return false;
+        return true;
     }
 
     /**
