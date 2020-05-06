@@ -35,6 +35,19 @@ class Router
         $this->acceptedCount = 0;
     }
 
+    private $baseUri = '';
+
+    public function addBaseUri($pattern)
+    {
+        $this->baseUri = $pattern;
+        return true;
+    }
+
+    public function resetBaseUri()
+    {
+        $this->baseUri = '';
+    }
+
     /**
      * Check if request uri and method match with route return true else false.
      * and when request uri match increment matchs count
@@ -47,7 +60,7 @@ class Router
     public function request($method, $pattern)
     {
         global $request;
-        if ($this->checkUri($request->uri, $pattern) === false) {
+        if ($this->checkUri($request->uri, $this->baseUri . $pattern) === false) {
             return false;
         }
         $this->matchsCount++;
