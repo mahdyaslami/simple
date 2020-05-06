@@ -37,6 +37,12 @@ class Router
 
     private $baseUri = '';
 
+    /**
+     * If request uri start with pattern return true else false.
+     * and after true result add pattern to ever route uri.
+     * 
+     * @param string $pattern Contain pattern you want to request uri start with.
+     */
     public function addBaseUri($pattern)
     {
         global $request;
@@ -54,6 +60,9 @@ class Router
         return true;
     }
 
+    /**
+     * Remove base uri.
+     */
     public function resetBaseUri()
     {
         $this->baseUri = '';
