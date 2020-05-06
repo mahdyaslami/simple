@@ -3,17 +3,32 @@
 class Router
 {
     private $matchsCount = 0;
+
+    /**
+     * Get count of uri that match with routes
+     * 
+     * @return integer
+     */
     public function getMatchsCount()
     {
         return $this->matchsCount;
     }
 
     private $acceptedCount = 0;
+
+    /**
+     * Get count of uri that accepted with a route (match method and uri together)
+     * 
+     * @return integer
+     */
     public function getAcceptedCount()
     {
         return $this->acceptedCount;
     }
 
+    /**
+     * Set matchs count and accepted count to zero.
+     */
     public function resetCounters()
     {
         $this->matchsCount = 0;
@@ -44,26 +59,61 @@ class Router
         return false;
     }
 
+    /**
+     * Get routes
+     * 
+     * @param string $pattern Contain pattern you want to match with request uri.
+     * 
+     * @return bool
+     */
     public function get($pattern)
     {
         return $this->request('GET', $pattern);
     }
 
+    /**
+     * Post routes
+     * 
+     * @param string $pattern Contain pattern you want to match with request uri.
+     * 
+     * @return bool
+     */
     public function post($pattern)
     {
         return $this->request('POST', $pattern);
     }
 
+    /**
+     * Put routes
+     * 
+     * @param string $pattern Contain pattern you want to match with request uri.
+     * 
+     * @return bool
+     */
     public function put($pattern)
     {
         return $this->request('PUT', $pattern);
     }
 
+    /**
+     * Delete routes
+     * 
+     * @param string $pattern Contain pattern you want to match with request uri.
+     * 
+     * @return bool
+     */
     public function delete($pattern)
     {
         return $this->request('DELETE', $pattern);
     }
 
+    /**
+     * Patch routes
+     * 
+     * @param string $pattern Contain pattern you want to match with request uri.
+     * 
+     * @return bool
+     */
     public function patch($pattern)
     {
         return $this->request('PATCH', $pattern);
