@@ -39,6 +39,17 @@ class Router
 
     public function addBaseUri($pattern)
     {
+        global $request;
+        $regex = $this->patternToRegex($pattern);
+        $matchs = [];
+        if (preg_match($regex, $request->uri, $matchs) !== 1) {
+            return false;
+        }
+
+        if (isset($matchs[0]) === false) {
+            return false;
+        }
+
         $this->baseUri = $pattern;
         return true;
     }
@@ -149,12 +160,9 @@ class Router
      */
     private function checkUri($uri, $pattern)
     {
-        $pattern = preg_replace('/{num:\w+}/', '(\d+)', $pattern);
-        $pattern = preg_replace('/{\w+}/', '(\w+)', $pattern);
-        $pattern = str_replace('/', '\/', $pattern);
-
+        $regex = $this->patternToRegex($pattern);
         $matchs = [];
-        if (preg_match('/' . $pattern . '/', $uri, $matchs) !== 1) {
+        if (preg_match($regex, $uri, $matchs) !== 1) {
             return false;
         }
 
@@ -166,5 +174,17 @@ class Router
         }
 
         return true;
+    }
+
+    /**
+     * Map pattern to regex
+     */
+    private function patternToRegex($pattern)
+    {
+        $pattern = preg_replace('/{num:\w+}/', '(\d+)', $pattern);
+        $pattern = preg_replace('/{\w+}/', '(\w+)', $pattern);
+        $pattern = str_replace('/', '\/', $pattern);
+
+        return '/^' . $pattern . '/';
     }
 }
