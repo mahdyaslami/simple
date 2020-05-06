@@ -17,5 +17,5 @@ if ($router->getAcceptedCount() > 0) {
 } else if ($router->getMatchsCount() > 0) {
     throw new Exception('Method not allowed.', 405);
 } else {
-    throw new Exception('Not found', 404);
+    throw new Exception('Not found.', 404);
 }
