@@ -8,9 +8,16 @@ class Router
         return $this->matchsCount;
     }
 
-    public function resetMatchsCount()
+    private $acceptedCount = 0;
+    public function getAcceptedCount()
+    {
+        return $this->acceptedCount;
+    }
+
+    public function resetCounters()
     {
         $this->matchsCount = 0;
+        $this->acceptedCount = 0;
     }
 
     /**
@@ -30,6 +37,7 @@ class Router
         }
 
         if (strtoupper($method) === $request->method) {
+            $this->acceptedCount++;
             return true;
         }
 
