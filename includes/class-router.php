@@ -59,6 +59,10 @@ class Router
      */
     public function request($method, $pattern)
     {
+        if ($this->acceptedCount > 0) {
+            return false;
+        }
+
         global $request;
         if ($this->checkUri($request->uri, $this->baseUri . $pattern) === false) {
             return false;
