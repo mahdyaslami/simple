@@ -8,6 +8,9 @@ if ($router->get('/users')) {
     require_once(__DIR__ . '/src/helloworld.php');
 } 
 
+//
+// Error handling
+//
 
 if ($router->getAcceptedCount() > 0) {
     // Silence.
