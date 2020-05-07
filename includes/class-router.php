@@ -35,6 +35,39 @@ class Router
         $this->acceptedCount = 0;
     }
 
+    private $baseUri = '';
+
+    /**
+     * If request uri start with pattern return true else false.
+     * and after true result add pattern to ever route uri.
+     * 
+     * @param string $pattern Contain pattern you want to request uri start with.
+     */
+    public function addBaseUri($pattern)
+    {
+        global $request;
+        $regex = $this->patternToRegex($pattern);
+        $matchs = [];
+        if (preg_match($regex, $request->uri, $matchs) !== 1) {
+            return false;
+        }
+
+        if (isset($matchs[0]) === false) {
+            return false;
+        }
+
+        $this->baseUri = $pattern;
+        return true;
+    }
+
+    /**
+     * Remove base uri.
+     */
+    public function resetBaseUri()
+    {
+        $this->baseUri = '';
+    }
+
     /**
      * Check if request uri and method match with route return true else false.
      * and when request uri match increment matchs count
@@ -46,8 +79,12 @@ class Router
      */
     public function request($method, $pattern)
     {
+        if ($this->acceptedCount > 0) {
+            return false;
+        }
+
         global $request;
-        if ($this->checkUri($request->uri, $pattern) === false) {
+        if ($this->checkUri($request->uri, $this->baseUri . $pattern) === false) {
             return false;
         }
         $this->matchsCount++;
@@ -132,12 +169,9 @@ class Router
      */
     private function checkUri($uri, $pattern)
     {
-        $pattern = preg_replace('/{num:\w+}/', '(\d+)', $pattern);
-        $pattern = preg_replace('/{\w+}/', '(\w+)', $pattern);
-        $pattern = str_replace('/', '\/', $pattern);
-
+        $regex = $this->patternToRegex($pattern);
         $matchs = [];
-        if (preg_match('/' . $pattern . '/', $uri, $matchs) !== 1) {
+        if (preg_match($regex, $uri, $matchs) !== 1) {
             return false;
         }
 
@@ -149,5 +183,17 @@ class Router
         }
 
         return true;
+    }
+
+    /**
+     * Map pattern to regex
+     */
+    private function patternToRegex($pattern)
+    {
+        $pattern = preg_replace('/{num:\w+}/', '(\d+)', $pattern);
+        $pattern = preg_replace('/{\w+}/', '(\w+)', $pattern);
+        $pattern = str_replace('/', '\/', $pattern);
+
+        return '/^' . $pattern . '/';
     }
 }

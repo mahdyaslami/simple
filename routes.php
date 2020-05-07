@@ -2,11 +2,18 @@
 
 $router = new Router();
 
-if ($router->get('/users')) {
-    echo 'users';
-} else if ($router->post('/users/{num:id}')) {
+if ($router->get('/hello-world')) {
     require_once(__DIR__ . '/src/helloworld.php');
-} 
+}
+
+if ($router->addBaseUri('/users')) {
+    if ($router->get('/{num:id}')) {
+        die('an item.');
+    } else if ($router->post('/create')) {
+        die('create');
+    }
+    $router->resetBaseUri();
+}
 
 //
 // Routing errors
