@@ -6,9 +6,9 @@ $router->addRoute('GET', '/hello-world', function($parameters) {
 
 $router->addGroup('/users', function (FastRoute\RouteCollector $group) {
     $group->addRoute('GET', '/{id:\d+}', function() {
-        die('an item');
+        echo 'an item';
     });
     $group->addRoute('POST', '/create', function() {
-        die('create');
+        echo 'create';
     });
 });
