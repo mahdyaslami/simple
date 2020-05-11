@@ -1,28 +1,14 @@
 <?php
 
-$router = new Router();
-
-if ($router->get('/hello-world')) {
+$router->addRoute('GET', '/hello-world', function($parameters) {
     require_once(__DIR__ . '/src/helloworld.php');
-}
+});
 
-if ($router->addBaseUri('/users')) {
-    if ($router->get('/{num:id}')) {
-        die('an item.');
-    } else if ($router->post('/create')) {
+$router->addGroup('/users', function (FastRoute\RouteCollector $group) {
+    $group->addRoute('GET', '/{id:\d+}', function() {
+        die('an item');
+    });
+    $group->addRoute('POST', '/create', function() {
         die('create');
-    }
-    $router->resetBaseUri();
-}
-
-//
-// Routing errors
-//
-
-if ($router->getAcceptedCount() > 0) {
-    // Silence.
-} else if ($router->getMatchsCount() > 0) {
-    throw new Exception('Method not allowed.', 405);
-} else {
-    throw new Exception('Not found.', 404);
-}
+    });
+});
