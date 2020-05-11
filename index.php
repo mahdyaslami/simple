@@ -5,7 +5,7 @@ require_once('vendor/autoload.php');
 
 try {
     $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $router) {
-        require_once('routes.php');
+        require_once('configs/routes.php');
     });
 
     $routeInfo = $dispatcher->dispatch($request->method, $request->uri);
