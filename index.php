@@ -1,7 +1,6 @@
 <?php
 
 require_once('includes/global-variables.php');
-require_once('includes/class-router.php');
 require_once('vendor/autoload.php');
 
 try {
