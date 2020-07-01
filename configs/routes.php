@@ -11,14 +11,24 @@ $routes = [
     ],
     [
         'method' => 'GET',
-        'url' => '/users/(\d+)'
+        'url' => '/users/{id}',
+        'params' => [
+            'id' => '\d+'
+        ]
     ],
     [
         'method' => 'POST',
-        'url' => '/users/(\d+)'
+        'url' => '/users/{id}',
+        'params' => [
+            'id' => '\d+'
+        ]
     ],
     [
         'method' => 'POST',
-        'url' => '/(en|fa)/users/(\d+)'
+        'url' => '/{lang}/users/{id}',
+        'params' => [
+            'lang' => 'en|fa',
+            'id' => '\d+'
+        ]
     ],
 ];
