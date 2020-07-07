@@ -3,29 +3,29 @@
 $routes = [
     [
         'method' => 'GET',
-        'url' => '/users'
+        'path' => '/users'
     ],
     [
         'method' => 'POST',
-        'url' => '/users'
+        'path' => '/users'
     ],
     [
         'method' => 'GET',
-        'url' => '/users/{id}',
+        'path' => '/users/{id}',
         'params' => [
             'id' => '\d+'
         ]
     ],
     [
         'method' => 'POST',
-        'url' => '/users/{id}',
+        'path' => '/users/{id}',
         'params' => [
             'id' => '\d+'
         ]
     ],
     [
         'method' => 'POST',
-        'url' => '/{lang}/users/{id}',
+        'path' => '/{lang}/users/{id}',
         'params' => [
             'lang' => 'en|fa',
             'id' => '\d+'

@@ -53,11 +53,11 @@ function routeItemToPattern($route, $index)
         //
         // Prepare route item pattern and return them.
         //
-        return '(' . $route['method'] . ')* ' . str_replace($arraySearch, $arrayReplace, $route['url']) . '$(*:' . $index . ')';
+        return '(' . $route['method'] . ')* ' . str_replace($arraySearch, $arrayReplace, $route['path']) . '$(*:' . $index . ')';
     }
 
     //
     // Return pattern of route that does not have any parameter.
     //
-    return '(' . $route['method'] . ')* ' . $route['url'] . '$(*:' . $index . ')';
+    return '(' . $route['method'] . ')* ' . $route['path'] . '$(*:' . $index . ')';
 }
