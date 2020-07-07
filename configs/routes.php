@@ -10,6 +10,7 @@
  *      'params' => 
  *              Array of parameters that used in path. see following array:
  *                  [
+ *          'id' => '\d+',
  *          'param-name' => 'regex-exp without parenthesis `()`'
  *      ]
  *  ]
