@@ -2,10 +2,10 @@
 
 function routesArrayToPattern($routes)
 {
-    $pattern = routeItemToPattern($routes[0], 0);
-    for ($i = 1; $i < count($routes); $i++) {
-        $pattern .= '|' . routeItemToPattern($routes[$i], $i);
-    }
+    $pattern = array_reduce(array_keys($routes), function ($carry, $item) use ($routes) {
+        return $carry . '|' . routeItemToPattern($routes[$item], $item);
+    }, '');
+    $pattern = substr($pattern, 1);
 
     return '/(' . $pattern . ')/';
 }
