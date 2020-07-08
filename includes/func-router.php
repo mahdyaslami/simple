@@ -3,7 +3,9 @@
 /**
  * Change a routes array to a regex pattern.
  * 
- * @param array $routes Array of route items
+ * @param array $routes Array of route items.
+ * 
+ * @return string Regex pattern of all routes.
  */
 function routesArrayToPattern($routes)
 {
@@ -26,6 +28,8 @@ function routesArrayToPattern($routes)
  * 
  * @param array $route A route item that defined in configs/routes.php
  * @param int $index Index of current route item in routes array.
+ * 
+ * @return string Regex pattern of $route.
  */
 function routeItemToPattern($route, $index)
 {
@@ -62,17 +66,35 @@ function routeItemToPattern($route, $index)
     return '(' . $route['method'] . ')* ' . $route['path'] . '$(*:' . $index . ')';
 }
 
+/**
+ * Find related route to current request path and invoke it's callbacks.
+ * 
+ * @param array $routes Array of route items. (for route item details see configs/routes.php)
+ * @param object $request Global request object. (for request object details see includes/global-variables.php)
+ * 
+ * @throws \Exception Method not allowed, Not found, Server error (callBacks is not setted.)
+ */
 function routeRequest($routes, $request)
 {
+    //
+    // Prepare input for regex matching and do matching.
+    //
     $input = $request->method . ' ' . $request->uri;
     preg_match(routesArrayToPattern($routes), $input, $output);
 
+    //
+    // If matching output is emtpy array so path has not found. if output has value but
+    // founded value is different with input path throw method not allowed exception.
+    //
     if (empty($output)) {
         throw new Exception('Not found.', 404);
     } elseif ($input !== trim($output[0])) {
         throw new Exception('Method not allowed.', 405);
     }
 
+    //
+    // Prepare $args for path parameters.
+    //
     $mark = $output['MARK'];
     $routeItem = $routes[$mark];
     $args = [];
@@ -82,10 +104,16 @@ function routeRequest($routes, $request)
         });
     }
 
+    //
+    // If there is no callBack for current route item throw server error.
+    //
     if (isset($routeItem['callBacks']) === false) {
         throw new Exception('There is no callBacks array for `' . $input . '` path.', 500);
     }
 
+    //
+    // Invoke callBack array of current route item.
+    //
     array_walk($routeItem['callBacks'], function ($value, $key) use ($args) {
         global $request;
         call_user_func($value, $request, $args);
