@@ -72,7 +72,7 @@ function routeItemToPattern($route, $index)
  * @param array $routes Array of route items. (for route item details see configs/routes.php)
  * @param object $request Global request object. (for request object details see includes/global-variables.php)
  * 
- * @throws \Exception Method not allowed, Not found, Server error (callBacks is not setted.)
+ * @throws \Exception Method not allowed, Not found, Server error (callbacks is not setted.)
  */
 function routeRequest($routes, $request)
 {
@@ -105,16 +105,16 @@ function routeRequest($routes, $request)
     }
 
     //
-    // If there is no callBack for current route item throw server error.
+    // If there is no callback for current route item throw server error.
     //
-    if (isset($routeItem['callBacks']) === false) {
-        throw new Exception('There is no callBacks array for `' . $input . '` path.', 500);
+    if (isset($routeItem['callbacks']) === false) {
+        throw new Exception('There is no callbacks array for `' . $input . '` path.', 500);
     }
 
     //
-    // Invoke callBack array of current route item.
+    // Invoke callback array of current route item.
     //
-    array_walk($routeItem['callBacks'], function ($value, $key) use ($args) {
+    array_walk($routeItem['callbacks'], function ($value, $key) use ($args) {
         global $request;
         call_user_func($value, $request, $args);
     });

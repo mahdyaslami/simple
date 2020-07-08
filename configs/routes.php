@@ -13,7 +13,7 @@
  *          'id' => '\d+',
  *          'param-name' => 'regex-exp without parenthesis `()`'
  *      ]
- *      'callBacks' => 
+ *      'callbacks' => 
  *              Array of functions that you want to invoke after each other.
  *              We always send two paramters to functions $request, $args.
  *                  $request: Contain current request.
@@ -27,7 +27,7 @@ $routes = [
     [
         'method' => 'GET',
         'path' => '/users',
-        'callBacks' => [
+        'callbacks' => [
             function() {
                 echo 'Hello';
             },
@@ -46,7 +46,7 @@ $routes = [
         'params' => [
             'id' => '\d+'
         ],
-        'callBacks' => [
+        'callbacks' => [
             function() {
                 echo 'Hello';
             },
