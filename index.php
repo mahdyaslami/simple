@@ -5,7 +5,7 @@ require_once(__DIR__ . '/includes/func-router.php');
 require_once(__DIR__ . '/configs/routes.php');
 
 try {
-    echo htmlspecialchars(routesArrayToPattern($routes));
+    routeRequest($routes, $request);
 
 } catch (Throwable $e) {
     http_response_code($e->getCode());
