@@ -66,5 +66,28 @@ function routeRequest($routes, $request)
 {
     $input = $request->method . ' ' . $request->uri;
     preg_match(routesArrayToPattern($routes), $input, $output);
-    print_r($output);
+
+    if (empty($output)) {
+        throw new Exception('Not found.', 404);
+    } elseif ($input !== trim($output[0])) {
+        throw new Exception('Method not allowed.', 405);
+    }
+
+    $mark = $output['MARK'];
+    $routeItem = $routes[$mark];
+    $args = [];
+    if (isset($routeItem['params'])) {
+        array_walk($routeItem['params'], function ($value, $key) use (&$args, $output, $mark) {
+            $args[$key] = $output[$key . $mark];
+        });
+    }
+
+    if (isset($routeItem['callBacks']) === false) {
+        throw new Exception('There is no callBacks array for `' . $input . '` path.', 500);
+    }
+
+    array_walk($routeItem['callBacks'], function ($value, $key) use ($args) {
+        global $request;
+        call_user_func($value, $request, $args);
+    });
 }

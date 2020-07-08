@@ -13,13 +13,28 @@
  *          'id' => '\d+',
  *          'param-name' => 'regex-exp without parenthesis `()`'
  *      ]
+ *      'callBacks' => 
+ *              Array of functions that you want to invoke after each other.
+ *              We always send two paramters to functions $request, $args.
+ *                  $request: Contain current request.
+ *                  $args: Contain path paramters value for example if path is
+ *                      `/users/10` and pattern is `/users/{id}` you can get id 
+ *                      with handle `$args['id']`.
  *  ]
  */
 
 $routes = [
     [
         'method' => 'GET',
-        'path' => '/users'
+        'path' => '/users',
+        'callBacks' => [
+            function() {
+                echo 'Hello';
+            },
+            function($request) {
+                echo ' World! ' . $request->uri;
+            }
+        ]
     ],
     [
         'method' => 'POST',
@@ -30,6 +45,14 @@ $routes = [
         'path' => '/users/{id}',
         'params' => [
             'id' => '\d+'
+        ],
+        'callBacks' => [
+            function() {
+                echo 'Hello';
+            },
+            function($request, $args) {
+                echo ' World! ' . $args['id'];
+            }
         ]
     ],
     [
