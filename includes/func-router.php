@@ -18,7 +18,7 @@ function routesArrayToPattern($routes)
     }, '');
     $pattern = substr($pattern, 1);
 
-    return '/(' . $pattern . ')/';
+    return '/(' . str_replace('/', '\/', $pattern) . ')/';
 }
 
 /**
@@ -60,4 +60,11 @@ function routeItemToPattern($route, $index)
     // Return pattern of route that does not have any parameter.
     //
     return '(' . $route['method'] . ')* ' . $route['path'] . '$(*:' . $index . ')';
+}
+
+function routeRequest($routes, $request)
+{
+    $input = $request->method . ' ' . $request->uri;
+    preg_match(routesArrayToPattern($routes), $input, $output);
+    print_r($output);
 }
