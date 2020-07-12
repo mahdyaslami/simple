@@ -1,4 +1,5 @@
 <?php
+
 /**
  * An Route Item:
  *  [
@@ -28,10 +29,10 @@ $routes = [
         'method' => 'GET',
         'path' => '/users',
         'callbacks' => [
-            function() {
+            function () {
                 echo 'Hello';
             },
-            function($request) {
+            function ($request) {
                 echo ' World! ' . $request->uri;
             }
         ]
@@ -47,10 +48,10 @@ $routes = [
             'id' => '\d+'
         ],
         'callbacks' => [
-            function() {
+            function () {
                 echo 'Hello';
             },
-            function($request, $args) {
+            function ($request, $args) {
                 echo ' World! ' . $args['id'];
             }
         ]
@@ -70,4 +71,55 @@ $routes = [
             'id' => '\d+'
         ]
     ],
+    [
+        'path' => '/colors',
+        'callbacks' => [
+            function () {
+                echo 'Hello';
+            },
+            function ($request) {
+                echo ' World! ' . $request->uri;
+            }
+        ],
+        'children' => [
+            [
+                'method' => 'GET',
+                'path' => '',
+                'callbacks' => [
+                    function () {
+                        echo 'Hello';
+                    },
+                    function ($request) {
+                        echo ' World! ' . $request->uri;
+                    }
+                ]
+            ],
+            [
+                'method' => 'POST',
+                'path' => ''
+            ],
+            [
+                'method' => 'GET',
+                'path' => '/{id}',
+                'params' => [
+                    'id' => '\d+'
+                ],
+                'callbacks' => [
+                    function () {
+                        echo 'Hello';
+                    },
+                    function ($request, $args) {
+                        echo ' World! ' . $args['id'];
+                    }
+                ]
+            ],
+            [
+                'method' => 'POST',
+                'path' => '/{id}',
+                'params' => [
+                    'id' => '\d+'
+                ]
+            ]
+        ]
+    ]
 ];
