@@ -1,5 +1,30 @@
 <?php
 
+function mapGroupedRoutes($routes)
+{
+    $result = [];
+    array_walk($routes, function ($item) use (&$result) {
+        if (isset($item['children'])) {
+            mapRouteGroupToRouteItems($item, $result);
+        } else {
+            array_push($result, $item);
+        }
+    });
+    // echo htmlspecialchars(print_r($result, true));
+    // die();
+    return $result;
+}
+
+function mapRouteGroupToRouteItems($group, &$routes)
+{
+    array_walk($group['children'], function ($item) use (&$routes, $group) {
+        $item['path'] = $group['path'] . $item['path'];
+        $item['callbacks'] = array_merge($group['callbacks'], $item['callbacks']);
+
+        array_push($routes, $item);
+    });
+}
+
 /**
  * Change a routes array to a regex pattern.
  * 
@@ -80,6 +105,7 @@ function routeRequest($routes, $request)
     // Prepare input for regex matching and do matching.
     //
     $input = $request->method . ' ' . $request->uri;
+    $routes = mapGroupedRoutes($routes);
     preg_match(routesArrayToPattern($routes), $input, $output);
 
     //
