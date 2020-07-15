@@ -1,8 +1,18 @@
 <?php
 
+/**
+ * Map every route group in routes to route items
+ * 
+ * @param array $routes Array contains route items and route groups.
+ * 
+ * @return array Array contains route items only.
+ */
 function mapGroupedRoutes($routes)
 {
     $result = [];
+    //
+    // Iterate all $routes item and map route group items to route items.
+    //
     array_walk($routes, function ($item) use (&$result) {
         if (isset($item['children'])) {
             mapRouteGroupToRouteItems($item, $result);
@@ -10,17 +20,34 @@ function mapGroupedRoutes($routes)
             array_push($result, $item);
         }
     });
-    // echo htmlspecialchars(print_r($result, true));
-    // die();
     return $result;
 }
 
+/**
+ * Map a route group to route items.
+ * 
+ * @param array $group A route group that defined in configs/routes.php
+ * @param array $routes Refer to an array to which you want to add route items.
+ */
 function mapRouteGroupToRouteItems($group, &$routes)
 {
+    //
+    // Iterate for each children items.
+    //
     array_walk($group['children'], function ($item) use (&$routes, $group) {
+        //
+        // Concat group path before route item path.
+        //
         $item['path'] = $group['path'] . $item['path'];
+
+        //
+        // Merge callbacks.
+        //
         $item['callbacks'] = array_merge($group['beforeCallbacks'], $item['callbacks'], $group['afterCallbacks']);
 
+        //
+        // Push new route item into $routes.
+        //
         array_push($routes, $item);
     });
 }
