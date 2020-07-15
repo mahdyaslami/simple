@@ -39,7 +39,8 @@ $routes = [
     ],
     [
         'method' => 'POST',
-        'path' => '/users'
+        'path' => '/users',
+        'callbacks' => []
     ],
     [
         'method' => 'GET',
@@ -61,7 +62,8 @@ $routes = [
         'path' => '/users/{id}',
         'params' => [
             'id' => '\d+'
-        ]
+        ],
+        'callbacks' => []
     ],
     [
         'method' => 'POST',
@@ -69,7 +71,8 @@ $routes = [
         'params' => [
             'lang' => 'en|fa',
             'id' => '\d+'
-        ]
+        ],
+        'callbacks' => []
     ],
     [
         'path' => '/colors',
@@ -96,7 +99,8 @@ $routes = [
             ],
             [
                 'method' => 'POST',
-                'path' => ''
+                'path' => '',
+                'callbacks' => []
             ],
             [
                 'method' => 'GET',
@@ -118,7 +122,8 @@ $routes = [
                 'path' => '/{id}',
                 'params' => [
                     'id' => '\d+'
-                ]
+                ],
+                'callbacks' => []
             ]
         ]
     ]
