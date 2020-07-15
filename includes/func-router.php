@@ -19,7 +19,7 @@ function mapRouteGroupToRouteItems($group, &$routes)
 {
     array_walk($group['children'], function ($item) use (&$routes, $group) {
         $item['path'] = $group['path'] . $item['path'];
-        $item['callbacks'] = array_merge($group['callbacks'], $item['callbacks']);
+        $item['callbacks'] = array_merge($group['beforeCallbacks'], $item['callbacks'], $group['afterCallbacks']);
 
         array_push($routes, $item);
     });
