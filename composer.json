@@ -1,0 +1,16 @@
+{
+    "name": "mahdyaslami/ssfw",
+    "description": "super simple framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mahdyaslami",
+            "email": "mahdyaslami@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "nikic/fast-route": "^2.0@dev"
+    }
+}
