@@ -1,0 +1,51 @@
+<?php return array (
+  0 => 
+  array (
+    'GET' => 
+    array (
+      '/ssfw/hello-world' => 
+      Closure::__set_state(array(
+      )),
+    ),
+    'POST' => 
+    array (
+      '/ssfw/users/create' => 
+      Closure::__set_state(array(
+      )),
+    ),
+  ),
+  1 => 
+  array (
+    'GET' => 
+    array (
+      0 => 
+      array (
+        'regex' => '~^(?|/ssfw/users/(\\d+)|/ssfw/users/(\\d+)/([^/]+))$~',
+        'routeMap' => 
+        array (
+          2 => 
+          array (
+            0 => 
+            Closure::__set_state(array(
+            )),
+            1 => 
+            array (
+              'id' => 'id',
+            ),
+          ),
+          3 => 
+          array (
+            0 => 
+            Closure::__set_state(array(
+            )),
+            1 => 
+            array (
+              'id' => 'id',
+              'name' => 'name',
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);

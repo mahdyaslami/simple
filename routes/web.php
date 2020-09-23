@@ -1,7 +1,7 @@
 <?php
 
 $router->addRoute('GET', '/hello-world', function() {
-    require_once(__DIR__ . '/src/helloworld.php');
+    require_once(base_path('/src/helloworld.php'));
 });
 
 $router->addGroup('/users', function (FastRoute\RouteCollector $group) {
