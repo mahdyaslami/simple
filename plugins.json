@@ -1,0 +1,4 @@
+[
+  { "order": 2.0, "bootstrap": "test.php" },
+  { "order": 1.0, "bootstrap": "route.php" }
+]

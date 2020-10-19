@@ -6,5 +6,5 @@
  */
 function base_path($path)
 {
-    return __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . ltrim($path, '/\\');
+    return __DIR__ . DIRECTORY_SEPARATOR . ltrim($path, '/\\');
 }
