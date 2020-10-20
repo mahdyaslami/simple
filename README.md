@@ -1,4 +1,4 @@
-# Super Simple Framework (SSFW)
+# Super **Simple** Framework
 
 This is very very very simple framework that let us to implement our api on 
 optional route without file url approach with simple php.
