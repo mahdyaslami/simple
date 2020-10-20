@@ -2,6 +2,4 @@
 
 require_once('vendor/autoload.php');
 
-require_once('helpers.php');
-
-require_once('bootstrap/pluginable.php');
+echo base_path();
