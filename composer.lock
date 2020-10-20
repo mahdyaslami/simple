@@ -7,21 +7,21 @@
     "content-hash": "9f8611edb9a23987e9ff4e08b229f34f",
     "packages": [
         {
-            "name": "mahdyaslami/ssfw-fast-route",
+            "name": "mahdyaslami/simple-fast-route",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mahdyaslami/ssfw-fast-route.git",
+                "url": "https://github.com/mahdyaslami/simple-fast-route.git",
                 "reference": "49a61fa4d1d34d2ede8a926c368a66edc2a620e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mahdyaslami/ssfw-fast-route/zipball/49a61fa4d1d34d2ede8a926c368a66edc2a620e9",
+                "url": "https://api.github.com/repos/mahdyaslami/simple-fast-route/zipball/49a61fa4d1d34d2ede8a926c368a66edc2a620e9",
                 "reference": "49a61fa4d1d34d2ede8a926c368a66edc2a620e9",
                 "shasum": ""
             },
             "require": {
-                "mahdyaslami/ssfw-helpers": "^1.2",
+                "mahdyaslami/simple-helpers": "^1.2",
                 "nikic/fast-route": "^1.3",
                 "symfony/filesystem": "^5.1"
             },
@@ -41,7 +41,7 @@
                     "email": "mahdyaslami@gmail.com"
                 }
             ],
-            "description": "Register fast-route package on ssfw.",
+            "description": "Register fast-route package on simple.",
             "keywords": [
                 "SSFW",
                 "framework",
@@ -50,16 +50,16 @@
             "time": "2020-10-20T09:42:23+00:00"
         },
         {
-            "name": "mahdyaslami/ssfw-helpers",
+            "name": "mahdyaslami/simple-helpers",
             "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mahdyaslami/ssfw-helpers.git",
+                "url": "https://github.com/mahdyaslami/simple-helpers.git",
                 "reference": "cc64f6feedf408d077f80ddc2213dbbafa4acf73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mahdyaslami/ssfw-helpers/zipball/cc64f6feedf408d077f80ddc2213dbbafa4acf73",
+                "url": "https://api.github.com/repos/mahdyaslami/simple-helpers/zipball/cc64f6feedf408d077f80ddc2213dbbafa4acf73",
                 "reference": "cc64f6feedf408d077f80ddc2213dbbafa4acf73",
                 "shasum": ""
             },
@@ -273,7 +273,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "mahdyaslami/ssfw-fast-route": 20
+        "mahdyaslami/simple-fast-route": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

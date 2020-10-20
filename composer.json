@@ -1,5 +1,5 @@
 {
-    "name": "mahdi.aslami/ssfw",
+    "name": "mahdi.aslami/simple",
     "description": "super simple framework",
     "type": "project",
     "license": "MIT",
@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "mahdyaslami/ssfw-helpers": "^1.2",
-        "mahdyaslami/ssfw-fast-route": "dev-main"
+        "mahdyaslami/simple-helpers": "^1.2",
+        "mahdyaslami/simple-fast-route": "dev-main"
     },
     "autoload": {
         "psr-4": {
