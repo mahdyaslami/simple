@@ -10,8 +10,6 @@
         }
     ],
     "require": {
-        "mahdyaslami/simple-helpers": "^1.2",
-        "mahdyaslami/simple-fast-route": "dev-main"
     },
     "autoload": {
         "psr-4": {
