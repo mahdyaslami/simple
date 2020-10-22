@@ -13,11 +13,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/",
-            "SSFW\\Plugins\\": "plugins/"
+            "App\\": "src/"
         }
     },
     "scripts": {
-        "post-autoload-dump": "SSFW\\Plugins\\Composer::postAutoloadDump"
+        "post-autoload-dump": "Simple\\Plugins\\Installer::postAutoloadDump"
     }
 }
