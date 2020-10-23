@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "mahdyaslami/simple-pluginable": "^1.0"
     },
     "autoload": {
         "psr-4": {
