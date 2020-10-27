@@ -11,8 +11,8 @@
     ],
     "require": {
         "mahdyaslami/simple-helpers": "^1.2",
-        "mahdyaslami/simple-pluginable": "^1.1",
-        "mahdyaslami/simple-fast-route": "^1.0",
+        "mahdyaslami/simple-pluginable": "^1.2",
+        "mahdyaslami/simple-fast-route": "^1.1",
         "mahdyaslami/simple-apache-pack": "^1.0"
     },
     "autoload": {
