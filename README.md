@@ -3,27 +3,28 @@
 This is very very very simple framework that let us to implement our api on 
 optional route without file url approach with simple php.
 
-## Nameing Conventions
+## My goal
 
-### Files
+A framework have to be.
 
-- **includes folder**: Contain global functions, variables and classes.
-    - class files: `class-name-of-class.php`
-    - func files: `func-name-of-module.php`
+* As simple as possible.
+* As fast as possible.
+* As flexible as possible.
+* Less project size.
+* More raw php.
+* More function base code.
 
-### Class
+* Extensible.
+* Package independent.
 
-- **class name**: Pascal Case
-- **method name**: camel Case
-- **property name**: camel Case
-- **namespaces**: Pascal Case
-- [Use symfony coding standard for other convenction for classes](https://symfony.com/doc/current/contributing/code/standards.html#symfony-coding-standards-in-detail)
+## Doc
 
-### Global functions and variables
+Study documnetion of this packages in order:
 
-- **function name**: camel Case
-- **variable name**: camel Case
-
+- [mahdyaslami/simple-pluginable](https://github.com/mahdyaslami/simple-pluginable)
+- [mahdyaslami/simple-helpers](https://github.com/mahdyaslami/simple-helpers)
+- [mahdyaslami/simple-fast-route](https://github.com/mahdyaslami/simple-fast-route)
+- [nikic/FastRoute](https://github.com/nikic/FastRoute)
 
 <hr>
 
