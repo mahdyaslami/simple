@@ -11,7 +11,6 @@
 | can create your routes with with standards and options of fast route package.
 |
 | https://github.com/nikic/FastRoute
-| https://github.com/mahdyaslami/simple-fast-route
 |
 | Note:
 | * Anonymous functions does not supported as handler when cache is enabled.

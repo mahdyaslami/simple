@@ -2,6 +2,8 @@
 
 namespace App\Exceptions;
 
+use Simple\FastRoute\Exceptions\HttpException;
+
 class Handler
 {
     /**
@@ -12,6 +14,12 @@ class Handler
      */
     public function register(\Throwable $e)
     {
+        if ($e instanceof HttpException) {
+            echo $e->getCode();
+
+            return;
+        }
+
         throw $e;
     }
 }
