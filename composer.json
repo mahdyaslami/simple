@@ -10,17 +10,18 @@
         }
     ],
     "require": {
-        "mahdyaslami/simple-helpers": "^1.2",
-        "mahdyaslami/simple-pluginable": "^1.2",
-        "mahdyaslami/simple-fast-route": "^1.1",
-        "mahdyaslami/simple-apache-pack": "^1.0"
+        "mahdyaslami/simplex": "^1.0.1"
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "App\\Routes\\": "routes/"
         }
     },
-    "scripts": {
-        "post-autoload-dump": "Simple\\Plugins\\Installer::postAutoloadDump"
-    }
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "prefer-stable": true
 }
