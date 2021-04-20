@@ -1,6 +1,6 @@
 {
     "name": "mahdyaslami/simple",
-    "description": "super simple framework",
+    "description": "Super simple framework",
     "type": "project",
     "license": "MIT",
     "authors": [
@@ -9,13 +9,10 @@
             "email": "mahdyaslami@gmail.com"
         }
     ],
-    "require": {
-        "mahdyaslami/simplex": "^1.0.2"
-    },
+    "require": {},
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "App\\Routes\\": "routes/"
+            "App\\": "app/"
         }
     },
     "config": {
