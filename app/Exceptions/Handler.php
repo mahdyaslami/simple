@@ -1,25 +1,9 @@
 <?php
 
-namespace App\Exceptions;
+use Psr\Http\Message\ServerRequestInterface;
 
-use Simple\FastRoute\Exceptions\HttpException;
+$handler = resolve(\Simplex\Contracts\ExceptionHandlerInterface::class);
 
-class Handler
-{
-    /**
-     * Handler app errors here.
-     * 
-     * @param  \Throwable  $e
-     * @return void
-     */
-    public function register(\Throwable $e)
-    {
-        if ($e instanceof HttpException) {
-            echo $e->getCode();
-
-            return;
-        }
-
-        throw $e;
-    }
-}
+$handler->render(Exception::class, function (\Throwable $e, ServerRequestInterface $request = null) {
+    throw $e;
+});

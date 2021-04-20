@@ -1,4 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../bootstrap/app.php';
+require_once './../vendor/autoload.php';
 
+$app = require_once('./../framework/app.php');
+
+$app->run();
