@@ -3,7 +3,7 @@
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-$router = resolve(\Psr\Http\Server\RequestHandlerInterface::class)->getRouter();
+$router = resolve('request-handler')->getRouter();
 
 /*
 |--------------------------------------------------------------------------

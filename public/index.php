@@ -2,6 +2,6 @@
 
 require_once './../vendor/autoload.php';
 
-$app = require_once('./../framework/app.php');
+require_once './../framework/bootstrap.php';
 
-$app->run();
+resolve('app')->run();
