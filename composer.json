@@ -12,11 +12,25 @@
     "require": {
         "mahdyaslami/simplex": "^1.1"
     },
+    "require-dev": {
+        "mockery/mockery": "^1.4",
+        "phpunit/phpunit": "^9.5"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Simplex\\": "framework/Simplex/"
         }
+    },
+    "autoload-dev": {
+        "Tests\\": "tests"
+    },
+    "scripts": {
+        "test": "./vendor/bin/phpunit --colors=always",
+        "coverage": [
+            "@putenv XDEBUG_MODE=coverage",
+            "./vendor/bin/phpunit --colors=always --coverage-html ./.phpunit.cache/coverage-report"
+        ]
     },
     "config": {
         "optimize-autoloader": true,
