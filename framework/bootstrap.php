@@ -27,7 +27,7 @@ require_once __DIR__ . '/helpers.php';
 //
 // Create request factory for generating request.
 //
-container()->add(
+container()->singleton(
     RequestFactoryInterface::class,
     new RequestFactory
 );
@@ -35,7 +35,7 @@ container()->add(
 //
 // Create request handler for handling routes.
 //
-container()->add(
+container()->singleton(
     RequestHandlerInterface::class,
     new RequestHandler(__DIR__ . '/cache/router.cache', !env('APP_DEBUG'))
 );
@@ -45,7 +45,7 @@ require_once './../routes/api.php';
 //
 // Create exception handler.
 //
-container()->add(
+container()->singleton(
     ExceptionHandlerInterface::class,
     new ExceptionHandler
 );
@@ -55,7 +55,7 @@ require_once './../app/Exceptions/Handler.php';
 //
 // Create response emitter.
 //
-container()->add(
+container()->singleton(
     ResponseEmitterInterface::class,
     new ResponseEmitter
 );
@@ -63,7 +63,7 @@ container()->add(
 //
 // Create application.
 //
-container()->add(
+container()->singleton(
     'app',
     new \Simplex\Http\Application(
         resolve(RequestFactoryInterface::class),
