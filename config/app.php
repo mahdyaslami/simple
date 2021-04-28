@@ -13,14 +13,14 @@ $_ENV['BASE_PATH'] = __DIR__;
 //
 // Bootstrap framework.
 //
-require_once './framework/bootstrap.php';
+require_once './../framework/bootstrap.php';
 
 //
 // Set routes.
 //
-require_once './routes/api.php';
+require_once './../routes/api.php';
 
 //
 // Set error handler.
 //
-require_once './app/Exceptions/Handler.php';
+require_once './../app/Exceptions/Handler.php';
