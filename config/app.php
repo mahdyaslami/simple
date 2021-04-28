@@ -3,7 +3,7 @@
 //
 // Set env.php.
 //
-$_ENV = require_once('./env.php');
+$_ENV = require_once('./../env.php');
 
 //
 // Set app base path.
