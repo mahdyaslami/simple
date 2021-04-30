@@ -1,5 +1,11 @@
 <?php
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+
+$router = resolve(RequestHandlerInterface::class)->getRouter();
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -8,9 +14,9 @@
 | Here is where you can register routes for your application. These
 | routes are loaded by the nikic/fast-route package provided by 
 | mahdyaslami/simple-fast-route plugin within vendor directory you
-| can create your routes with with standards and options of fast route package.
+| can create your routes with with standards and options of league/route package.
 |
-| https://github.com/nikic/FastRoute
+| https://route.thephpleague.com/
 |
 | Note:
 | * Anonymous functions does not supported as handler when cache is enabled.
@@ -22,8 +28,12 @@
 | * Function name.
 | * Array contain class fullname and a public method.
 |       ['App\Controller\UserController', 'index']
+| * String contain class fullname and public method name.
+|       '\App\Controller\UserController@index'
 */
 
-$router->addRoute('GET', '/', function () {
-    echo 'Hello World!';
+$router->get('/', function (ServerRequestInterface $request): ResponseInterface {
+    $response = new Laminas\Diactoros\Response;
+    $response->getBody()->write('<h1>Hello, World!</h1>');
+    return $response;
 });
